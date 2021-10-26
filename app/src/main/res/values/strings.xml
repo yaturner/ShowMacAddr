@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ShowMacAddr</string>
+    <string name="status_unavailable">Status Unavailable</string>
+</resources>
