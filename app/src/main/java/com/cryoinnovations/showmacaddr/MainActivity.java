@@ -34,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tv_macAddress = findViewById(R.id.macAddress);
+        String o = shell_exec("ip addr");
+        Log.d("ADDR", o);
+        String[] lines = o.split("\n");
         for (int lineCtr = 0; lineCtr < lines.length; lineCtr++) {
             if (!found) {
                 Matcher matcher1 = pat1.matcher(lines[lineCtr]);
@@ -51,5 +54,20 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+
+    public String shell_exec(String cmd) {
+        String o = null;
+        try {
+            Process p = Runtime.getRuntime().exec(cmd);
+            BufferedReader b;
+            b = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            String line;
+            while ((line = b.readLine()) != null) o += line + "\n";
+        } catch (Exception e) {
+            o = "error";
+        }
+        return o;
     }
 }
