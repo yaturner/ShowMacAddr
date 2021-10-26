@@ -44,31 +44,30 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("ADDR", "found pat1");
                     found = true;
                 }
-                } else {
-                    Matcher matcher2 = pat2.matcher(lines[lineCtr]);
-                    if (matcher2.find()) {
-                        String s = matcher2.group().split(" ")[1];
-                        Log.d("ADDR", "found " + s);
-                        s = "MacAddress: " + s;
-                        tv_macAddress.setText(s);
-                    }
+            } else {
+                Matcher matcher2 = pat2.matcher(lines[lineCtr]);
+                if (matcher2.find()) {
+                    String s = matcher2.group().split(" ")[1];
+                    Log.d("ADDR", "found " + s);
+                    s = "MacAddress: " + s;
+                    tv_macAddress.setText(s);
                 }
             }
         }
+    }
 
 
-
-    public String shell_exec(String cmd)
-    {
-        String o=null;
-        try
-        {
-            Process p=Runtime.getRuntime().exec(cmd);
+    public String shell_exec(String cmd) {
+        String o = null;
+        try {
+            Process p = Runtime.getRuntime().exec(cmd);
             BufferedReader b;
             b = new BufferedReader(new InputStreamReader(p.getInputStream()));
             String line;
-            while((line=b.readLine())!=null)o+=line+"\n";
-        }catch(Exception e){o="error";}
+            while ((line = b.readLine()) != null) o += line + "\n";
+        } catch (Exception e) {
+            o = "error";
+        }
         return o;
     }
 }
