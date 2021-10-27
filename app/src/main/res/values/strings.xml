@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">ShowMacAddr</string>
     <string name="status_unavailable">Status Unavailable</string>
+    <string name="notConnected">Device is not connected to the internet\n Please connect to WiFi and try again</string>
 </resources>
